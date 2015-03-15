@@ -16,7 +16,12 @@ RUN apt-get update && apt-get install -y curl \
     && curl -o /usr/bin/btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-glibc-x64/BitTorrent-Sync_glibc23_x64.tar.gz \
     && cd /usr/bin && tar -xzvf btsync.tar.gz && rm btsync.tar.gz
 
-RUN mkdir -p {/btsync/.sync,/var/run/btsync,/data}
+RUN mkdir -p /btsync/.sync
+RUN mkdir -p /var/run/btsync
+RUN mkdir -p /data
+RUN touch /btsync/secret
+RUN touch /btsync/ro_secret
+RUN touch /btsync/btsync.conf
 
 EXPOSE 55555
 VOLUME ["/data"]

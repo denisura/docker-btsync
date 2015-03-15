@@ -3,7 +3,7 @@ set -e
 
 case "$1" in
         btsync-init)
-            if [ ! -f /btsync/btsync.conf ]; then
+            if [ ! -s /btsync/btsync.conf ]; then
                 echo "File not found!"
                 # generate secret key if ENV varibale has no value
                 : ${BTSYNC_SECRET:=`btsync --generate-secret`}
